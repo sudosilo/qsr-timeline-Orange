@@ -633,6 +633,8 @@
  * =============================================================================
  */
 
+// menu photos are served from the GitHub repo so the Vercel upload stays small
+const MENU_PHOTO_BASE = 'https://raw.githubusercontent.com/sudosilo/qsr-timeline-Orange/main/';
 const YEAR_START = 1880;
 const YEAR_END   = 2026;
 
@@ -2556,8 +2558,8 @@ function showTip(chain, selectedOwn, contextYear) {
   if (chain.menus && chain.menus.length) {
     rows.push('<div class="tip-loc-row"><span class="tip-loc-label">MENUS ON FILE</span></div>');
     rows.push('<div style="display:flex;gap:6px;overflow-x:auto;padding:4px 0">' + chain.menus.map(m =>
-      `<a href="${m.photo}" target="_blank" style="flex:0 0 auto;text-align:center;text-decoration:none;color:inherit">` +
-      `<img src="${m.photo}" loading="lazy" alt="Menu ${m.year}" style="height:120px;width:auto;border:1px solid #ccc;border-radius:3px;display:block" onerror="this.parentNode.style.display='none'">` +
+      `<a href="${MENU_PHOTO_BASE + m.photo}" target="_blank" style="flex:0 0 auto;text-align:center;text-decoration:none;color:inherit">` +
+      `<img src="${MENU_PHOTO_BASE + m.photo}" loading="lazy" alt="Menu ${m.year}" style="height:120px;width:auto;border:1px solid #ccc;border-radius:3px;display:block" onerror="this.parentNode.style.display='none'">` +
       `<div style="font-size:11px">${m.year}</div></a>`).join('') + '</div>');
   }
   locEl.innerHTML = rows.join('');
